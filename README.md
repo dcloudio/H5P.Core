@@ -16,6 +16,6 @@ H5P.Core 为5+Runtime核心组件定义并实现了一套插件机制，可以�
   2. 百度地图插件 (https://github.com/dcloudio/H5P.Plugins.maps.BaiDu)
   3. 条码扫描插件 (https://github.com/dcloudio/H5P.Plugins.barcode)
   4. Audio插件 (https://github.com/dcloudio/H5P.Plugins.audio)  
-  5. 个推push (https://github.com/dcloudio/H5P.Plugins.push.igexin)  
+  5. 个推push (https://github.com/dcloudio/H5P.Plugins.push.igexin)   
 #License
 遵循MIT License；
