@@ -15,6 +15,7 @@ H5P.Core 为5+Runtime核心组件定义并实现了一套插件机制，可以�
   1. 支付宝插件 (https://github.com/dcloudio/H5P.Plugins.payment.Alipay)
   2. 百度地图插件 (https://github.com/dcloudio/H5P.Plugins.maps.BaiDu)
   3. 条码扫描插件 (https://github.com/dcloudio/H5P.Plugins.barcode)
+  4. Audio插件 (https://github.com/dcloudio/H5P.Plugins.audio)
 
 #License
 遵循MIT License；
