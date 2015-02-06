@@ -61,8 +61,10 @@ typedef NS_ENUM(NSInteger, PDRCoreSysEvent) {
     PDRCoreSysEventRevDeviceToken = 6,
     /// 获取到APNS错误
     PDRCoreSysEventRegRemoteNotificationsError = 7,
+    /// 低内存警告
+    PDRCoreSysEventReceiveMemoryWarning = 8,
     /// 屏幕旋转事件 Reserved
-    PDRCoreSysEventInterfaceOrientation = 8
+    PDRCoreSysEventInterfaceOrientation = 9
 };
 
 /// runtime错误码定义

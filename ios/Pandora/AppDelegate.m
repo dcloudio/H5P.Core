@@ -44,7 +44,6 @@
 {
     [PDRCore Instance].launchOptions = launchOptions;
     [[PDRCore Instance] load];
-    NSDictionary *infoPlist = nil;
 #ifdef PDR_PLUS_MAP
     // 启动百度地图
     NSString *baiduAppKey = @"mRFUA0lOYyCGXOcFkZ4cP44K";
