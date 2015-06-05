@@ -17,18 +17,8 @@
 {
     [super loadView];
     PDRCore *h5Engine = [PDRCore Instance];
-    
     _isFullScreen = [UIApplication sharedApplication].statusBarHidden;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleNeedEnterFullScreenNotification:)
-                                                 name:PDRNeedEnterFullScreenNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleSetStatusBarBackgroundNotification:)
-                                                 name:PDRNeedSetStatusBarBackgroundNotification
-                                               object:nil];
     CGRect newRect = self.view.bounds;
-    
     if ( [self reserveStatusbarOffset] && [PTDeviceOSInfo systemVersion] > PTSystemVersion6Series) {
         if ( !_isFullScreen ) {
             newRect.origin.y += kStatusBarHeight;
@@ -48,27 +38,26 @@
         _statusBarView.autoresizingMask =  UIViewAutoresizingFlexibleWidth;
         [self.view addSubview:_statusBarView];
     }
-    //self.view.autoresizingMask =  UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     _containerView = [[UIView alloc] initWithFrame:newRect];
     _containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_containerView];
-    ///1113
+
     h5Engine.coreDeleagete = self;
     [h5Engine setContainerView:_containerView];
-    //[h5Engine setContainerView:self.view];
+    h5Engine.persentViewController = self;
     [h5Engine showLoadingPage];
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [[PDRCore Instance] start];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[PDRCore Instance] start];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:PDRNeedEnterFullScreenNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:PDRNeedSetStatusBarBackgroundNotification object:nil];
     // Release any retained subviews of the main view.
 }
 #pragma mark -
@@ -121,14 +110,13 @@
     return _statusBarView.backgroundColor;
 }
 #pragma mark -
-- (void)handleNeedEnterFullScreenNotification:(NSNotification*)notification
+-(void)wantsFullScreen:(BOOL)fullScreen
 {
-    NSNumber *isHidden = [notification object];
-    if ( _isFullScreen == [isHidden boolValue] ) {
+    if ( _isFullScreen == fullScreen ) {
         return;
     }
-        
-    _isFullScreen = [isHidden boolValue];
+
+    _isFullScreen = fullScreen;
     [[UIApplication sharedApplication] setStatusBarHidden:_isFullScreen withAnimation:_isFullScreen?NO:YES];
     if ( [PTDeviceOSInfo systemVersion] > PTSystemVersion6Series ) {
         [self setNeedsStatusBarAppearanceUpdate];
@@ -170,9 +158,8 @@
                             withObject:[NSNumber numberWithInt:0]];
 }
 
-- (void)handleSetStatusBarBackgroundNotification:(NSNotification*)notification
+-(void)setStatusBarBackground:(UIColor*)newColor
 {
-    UIColor *newColor = [notification object];
     if ( newColor ) {
         _statusBarView.backgroundColor = newColor;
     } else {
@@ -181,7 +168,6 @@
 }
 
 - (void)didReceiveMemoryWarning{
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
     [[PDRCore Instance] handleSysEvent:PDRCoreSysEventReceiveMemoryWarning withObject:nil];
 }
 

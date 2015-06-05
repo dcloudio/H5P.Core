@@ -16,27 +16,6 @@
 
 #pragma mark -
 #pragma mark app lifecycle
-
-#ifdef PDR_PLUS_MAP
-/**
- *返回网络错误
- *@param iError 错误号
- */
-- (void)onGetNetworkState:(int)iError{
-    
-}
-
-/**
- *返回授权验证错误
- *@param iError 错误号 : BMKErrorPermissionCheckFailure 验证失败
- */
-- (void)onGetPermissionState:(int)iError {
-    if ( E_PERMISSION_OK != iError ) {
-        NSLog(@"baidu maponGetPermissionState--[%d]", iError);
-    }
-}
-#endif
-
 /*
  * @Summary:程序启动时收到push消息
  */
@@ -44,22 +23,6 @@
 {
     [PDRCore Instance].launchOptions = launchOptions;
     [[PDRCore Instance] load];
-#ifdef PDR_PLUS_MAP
-    // 启动百度地图
-    NSString *baiduAppKey = @"mRFUA0lOYyCGXOcFkZ4cP44K";
-    if ( !infoPlist ) {
-        infoPlist = [[NSBundle mainBundle] infoDictionary];
-    }
-    NSDictionary *baiduInfo = [infoPlist objectForKey:@"baidu"];
-    if ( [baiduInfo isKindOfClass:[NSDictionary class]] ) {
-        NSString *tempAK = [baiduInfo objectForKey:@"appkey"];
-        if ( [baiduAppKey isKindOfClass:[NSString class]] ) {
-            baiduAppKey = tempAK;
-        }
-    }
-    _mapManager = [[BMKMapManager alloc]init];
-    [_mapManager start:baiduAppKey generalDelegate:self];
-#endif
     return YES;
 }
 
@@ -115,7 +78,7 @@
     return YES;
 }
 
-
+#ifdef PDR_PLUS_GETUI
 #pragma mark -
 #pragma mark APNS
 /*
@@ -146,14 +109,10 @@
 {
     [[PDRCore Instance] handleSysEvent:PDRCoreSysEventRevLocalNotification withObject:notification];
 }
+#endif
 
 - (void)dealloc
 {
-#ifdef PDR_PLUS_MAP
-    [_mapManager stop];
-    [_mapManager release];
-    _mapManager = nil;
-#endif
     [super dealloc];
 }
 

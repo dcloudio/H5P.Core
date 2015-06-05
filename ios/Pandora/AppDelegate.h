@@ -8,16 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class PDRCore;
-
-#ifdef PDR_PLUS_MAP
-#import "BMKMapManager.h"
-#import "BMKGeneralDelegate.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate, BMKGeneralDelegate>{
-    BMKMapManager *_mapManager;
-#else
-    @interface AppDelegate : UIResponder <UIApplicationDelegate>{
-#endif
-}
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 @end
