@@ -12,8 +12,6 @@
 UIKIT_EXTERN NSString *const PDRCoreOpenUrlNotification;
 UIKIT_EXTERN NSString *const PDRCoreRevDeviceToken;
 UIKIT_EXTERN NSString *const PDRCoreRegRemoteNotificationsError;
-UIKIT_EXTERN NSString *const PDRNeedEnterFullScreenNotification;
-UIKIT_EXTERN NSString *const PDRNeedSetStatusBarBackgroundNotification;
 
 #if __has_feature(objc_arc)
 #define H5_AUTORELEASE(exp) exp

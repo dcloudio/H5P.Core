@@ -53,6 +53,8 @@ typedef enum {
 +(PDRPluginResult*) resultWithStatus: (PDRCommandStatus) statusOrdinal
                 messageToErrorObject: (int) errorCode
                          withMessage:(NSString*)message;
++(PDRPluginResult*) resultWithInnerError:(int) errorCode
+                             withMessage:(NSString*)message;
 /**
  @brief 返回JSON格式的结果
  @return NSString*
@@ -62,19 +64,23 @@ typedef enum {
 @end
 
 enum {
+    PGPluginErrorInner = -100,
+    PGPluginErrorUnknown = -99,
+    PGPluginErrorNet = -6,
+    PGPluginErrorIO = -5,
+    PGPluginErrorFileNotFound = -4,
+    PGPluginErrorNotSupport = -3,
+    PGPluginErrorUserCancel = -2,
+    PGPluginErrorInvalidArgument = -1,
     PGPluginOK = 0,
-    PGPluginErrorFileNotFound,
     PGPluginErrorFileExist,
     PGPluginErrorFileCreateFail,
     PGPluginErrorZipFail,
     PGPluginErrorUnZipFail,
-    PGPluginErrorNotSupport,
-    PGPluginErrorInvalidArgument,
     PGPluginErrorNotAllowWrite,
     PGPluginErrorNotAllowRead,
     PGPluginErrorBusy,
     PGPluginErrorNotPermission,
-    PGPluginErrorIO,
     PGPluginErrorNext
 };
 
@@ -133,7 +139,9 @@ enum {
  @return void
  */
 -(void) toCallback: (NSString*) callbackId withReslut:(NSString*)message;
-
+-(void) toErrorCallback: (NSString*) callbackId withCode:(int)errorCode  withMessage:(NSString*)message;
+-(void) toErrorCallback: (NSString*) callbackId withCode:(int)errorCode;
+-(void) toErrorCallback: (NSString*) callbackId withInnerCode:(int)errorCode withMessage:(NSString*)message;
 - (NSString*) writeJavascript:(NSString*)javascript;
 - (NSString*) asyncWriteJavascript:(NSString*)javascript;
 

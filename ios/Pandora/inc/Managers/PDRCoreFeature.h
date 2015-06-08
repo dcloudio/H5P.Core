@@ -35,11 +35,15 @@
 
 @interface PDRCoreFeature : NSObject {
     NSMutableDictionary* m_pWebViewPluginMap;
+    NSMutableArray* _queue;
+    BOOL _isJSExecuting;
 }
+@property (nonatomic, readonly) BOOL currentlyExecuting;
 @property(nonatomic, assign) PDRCoreAppFrame* JSFrameContext;//js运行frame
 @property(nonatomic, assign) PDRCoreApp* JSAppContext; //js运行所属的APP
 
 - (id)Execute:(PGMethod*) pPadoraMethod;
+- (void)execCommandsFromJs:(NSString*)pJsonString;
 - (void)ProcessJSONString:(NSString*)pJsonString;
 - (void)handleAppUpgradesNoClose;
 - (void)handleNeedLayout;

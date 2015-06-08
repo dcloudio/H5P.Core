@@ -52,5 +52,5 @@ extern NSString *const PDRCoreAppFrameMaskClickNotificationKey;
  @return NSString* 执行结果
  */
 - (NSString*)stringByEvaluatingJavaScriptFromString:(NSString*)js;
-
+- (void)evaluatingJavaScriptAndFetchCommand:(NSString*)javascript;
 @end

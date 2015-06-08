@@ -1,4 +1,4 @@
-﻿/*
+/*
  *------------------------------------------------------------------
  *  pandora/tools/PTPathUtil.h
  *  Description:
@@ -24,11 +24,20 @@
          suggestedFilename:(NSString*)suggestedFilename
                     prefix:(NSString*)prefix
                     suffix:(NSString*)suffix;
+
++ (NSString*) absolutePath:(NSString*)path
+         suggestedFilename:(NSString*)suggestedFilename
+                    prefix:(NSString*)prefix
+                    suffix:(NSString*)suffix
+                   context:(PDRCoreApp*)context;
+
 + (NSString*) absolutePath:(NSString*)relativePath
                     prefix:(NSString*)prefix
                     suffix:(NSString*)suffix
                    context:(PDRCoreApp*)context;
 + (NSURL*)urlWithPath:(NSString*)path;
++ (NSString*) h5Path2SysPath:(NSString*)path basePath:(NSString*)basePath;
++ (NSString*) sysPath2H5path:(NSString*)path;
 //根据PDR规范的相对路径获取系统绝对路径
 + (NSString*) absolutePath:(NSString*)relativePath;
 + (NSString*) absolutePath:(NSString*)relativePath
@@ -60,6 +69,7 @@
 + (NSString*)appRootPathWithAppidL:(NSString*)appid;
 + (NSString*)appDataPathWithAppidL:(NSString*)appid;
 + (NSString*)appWWWPathWithAppidL:(NSString*)appid;
++ (NSString*)appTempPathWithAppid:(NSString*)appid;
 + (NSString*)appDebugPathWithAppidL:(NSString*)appid;
 + (NSString*)manifestPathWithAppidL:(NSString*)appid;
 + (NSString*)manifestPathWithAppidB:(NSString*)appid;
@@ -84,8 +94,9 @@
 + (NSString*)runtimeDownloadPath;
 //获取pdr日志目录libray/Pandora/log
 + (NSString*)runtimeLogPath;
-//获取pdr临时目录libray/Pandora/temp
+//获取pdr临时目录/temp
 + (NSString*)runtimeTmpPath;
++ (void)clearRuntimeTmpPath;
 + (NSString*)standardizingPath:(NSString*)path;
 //释放path相关内存
 + (void)free;

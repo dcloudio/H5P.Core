@@ -59,6 +59,7 @@ typedef NS_ENUM(NSInteger, PDRExendPluginType) {
 @property(nonatomic, readonly)NSArray *extendPlugins;
 //加载配置文件
 - (void) load;
+- (BOOL)configSupportOrientation:(UIInterfaceOrientation)orientation ;
 //判断是否支持指定的方向
 - (BOOL) supportsOrientation:(UIInterfaceOrientation)orientation;
 //判断所有支持的方向

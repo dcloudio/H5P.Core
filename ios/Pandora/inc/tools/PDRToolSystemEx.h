@@ -222,6 +222,11 @@ typedef NS_ENUM(NSInteger, PTDeviceType) {
 + (BOOL)setSkipBackupAttribute:(BOOL)skip toItemAtURL:(NSURL*)URL;
 @end
 
+@interface NSData (AES)
+- (NSData *)AESEncryptWithKey:(NSString *)key;
+- (NSData *)AESDecryptWithKey:(NSString *)key;
+@end
+
 #ifdef __cplusplus
 extern "C" {
 #endif

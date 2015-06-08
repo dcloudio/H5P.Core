@@ -73,6 +73,7 @@
 		17810BCB16A65AED0088502B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17810BCA16A65AEC0088502B /* SystemConfiguration.framework */; };
 		179EBAB118DA8EE600884635 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179EBAB018DA8EE600884635 /* Accounts.framework */; };
 		179EBAB318DA8EEC00884635 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 179EBAB218DA8EEC00884635 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		17A0443C1B256F6800C0F379 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A0443B1B256F6800C0F379 /* CoreTelephony.framework */; };
 		17AEC7E416F6C53300D5804C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AEC7E316F6C53300D5804C /* AVFoundation.framework */; };
 		17C2D0E8183A2B04008B6A7D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C2D0E7183A2B04008B6A7D /* GameKit.framework */; };
 		17CC513F17B1F64100AB5843 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CC513E17B1F64100AB5843 /* MediaPlayer.framework */; };
@@ -177,6 +178,7 @@
 		17810BCA16A65AEC0088502B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		179EBAB018DA8EE600884635 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		179EBAB218DA8EEC00884635 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		17A0443B1B256F6800C0F379 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		17AEC7E316F6C53300D5804C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17C2D0E7183A2B04008B6A7D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		17CC513E17B1F64100AB5843 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -238,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A0443C1B256F6800C0F379 /* CoreTelephony.framework in Frameworks */,
 				17132E4E1A7779830076A8E8 /* AssetsLibrary.framework in Frameworks */,
 				1719DCB0190A5B0E005316D3 /* MapKit.framework in Frameworks */,
 				1766DBC018ED34810066C448 /* libsqlite3.0.dylib in Frameworks */,
@@ -379,6 +382,7 @@
 		B2E94A34168A9F5300E86C65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17A0443B1B256F6800C0F379 /* CoreTelephony.framework */,
 				17132E4D1A7779830076A8E8 /* AssetsLibrary.framework */,
 				173C9104194E95BA00851607 /* libstdc++.6.0.9.dylib */,
 				1719DCAF190A5B0E005316D3 /* MapKit.framework */,

@@ -18,8 +18,12 @@
 
 /// H5+代理类用于和宿主环境沟通
 @protocol PDRCoreDelegate <NSObject>
+@optional
 /// @brief 获取状态栏颜色
 -(UIColor*)getStatusBarBackground;
+/// @brief 设置状态栏颜色
+-(void)setStatusBarBackground:(UIColor*)newColor;
+-(void)wantsFullScreen:(BOOL)fullScreen;
 @end
 
 /// H5+核心类负责H5+runtime的启动关闭
@@ -35,6 +39,7 @@
 @property(nonatomic, retain)NSDictionary* launchOptions;
 /// @brief Runtime代理类
 @property(nonatomic, assign)id<PDRCoreDelegate> coreDeleagete;
+@property(nonatomic, assign)UIViewController *persentViewController;
 /// @brief 获取Core单例对象
 + (PDRCore*)Instance;
 /// @brief 获取PandoraApi.bundle的路径
